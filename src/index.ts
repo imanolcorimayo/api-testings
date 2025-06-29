@@ -41,21 +41,21 @@ app.post('/phase-change-diagram', (req: Request, res: Response) => {
   }
   
   // Get pressure from request query parameters
-  const LIQUID_CONSTANT = -4.21428;
-  const LIQUID_SLOPE = 4061.22448;
+  const LIQUID_CONSTANT = -4.214285714285714;
+  const LIQUID_SLOPE = 4061.224489795918;
 
   const LIQUID_VOLUME =  (pressure - LIQUID_CONSTANT) / LIQUID_SLOPE;
 
   // Round 4 decimal places
-  const roundedLiquidVolume = Math.round(LIQUID_VOLUME * 10000) / 10000;
+  const roundedLiquidVolume = Math.round(LIQUID_VOLUME * 100000) / 100000;
 
-  const VAPOR_CONSTANT = 10.00116;
-  const VAPOR_SLOPE = -0.33170;
+  const VAPOR_CONSTANT = 10.00116096877969;
+  const VAPOR_SLOPE = -0.3317053656259897;
 
   const VAPOR_VOLUME = (pressure - VAPOR_CONSTANT) / VAPOR_SLOPE;
 
   // Round 4 decimal places
-  const roundedVaporVolume = Math.round(VAPOR_VOLUME * 10000) / 10000;
+  const roundedVaporVolume = Math.round(VAPOR_VOLUME * 100000) / 100000;
 
   res.send({
     specific_volume_liquid: roundedLiquidVolume,
